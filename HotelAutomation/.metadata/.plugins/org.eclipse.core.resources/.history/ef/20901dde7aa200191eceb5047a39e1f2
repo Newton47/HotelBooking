@@ -1,0 +1,11 @@
+package com.automateAmazon;
+
+import org.testng.annotations.Test;
+
+public class getOTP extends base{
+  @Test
+  public void getOTPfromGmail() 
+  {
+	  
+  }
+}

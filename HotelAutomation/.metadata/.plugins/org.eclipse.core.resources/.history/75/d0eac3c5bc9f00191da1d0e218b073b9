@@ -1,0 +1,47 @@
+package pageObjects;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.testng.annotations.Test;
+
+public class ProductSelectorObjects {
+  
+  @FindBy(xpath="//input[@id=\"twotabsearchtextbox\"]")
+  WebElement searchbar;
+  
+  @FindBy(xpath="//input[@type=\"submit\"]")
+  WebElement searchbutton;
+  
+  @FindBy(xpath="//i[@class=\"a-icon a-icon-star-medium a-star-medium-4\"]/span[@class=\"a-icon-alt\" and contains(text(),\"4 Stars & Up\")]")
+  WebElement rating4Selector;
+  
+  @FindBy(xpath="//i[@class=\"a-icon a-icon-star-medium a-star-medium-3\"]/span[@class=\"a-icon-alt\" and contains(tex\t(),\"3 Stars & Up\")]")
+  WebElement rating3Selector;
+  
+  @FindBy(xpath="//span[@class=\"a-badge-label-inner a-text-ellipsis\"]/span[@class=\"a-badge-text\" and contains(text(),\"Amazon's \")]")
+  WebElement productselector;
+  
+  public WebElement searchbars()
+  {
+	  return searchbar;
+  }
+  
+  public WebElement searchButton()
+  {
+	  return searchbutton;
+  }
+	
+  public WebElement rating4Selectors()
+  {
+	  return rating4Selector;
+  }
+  
+  public WebElement rating3Selectors()
+  {
+	  return rating3Selector;
+  }
+  public WebElement productSelector()
+  {
+	  return productselector;
+  }
+}

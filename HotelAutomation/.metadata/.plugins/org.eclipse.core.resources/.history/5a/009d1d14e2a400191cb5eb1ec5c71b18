@@ -1,0 +1,16 @@
+package learnSelenium;
+
+import org.openqa.selenium.WebDriver;
+
+public class NumTable {
+
+	public static void main(String[] args) {
+		WebDriver wd;
+    	System.setProperty("webdriver.chrome.driver","G://chromedriver.exe");
+    	wd = new ChromeDriver();
+    	wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    	wd.get("http://demo.guru99.com/test/table.html");s
+
+	}
+
+}

@@ -1,0 +1,52 @@
+Feature: Hotelbooking login
+
+Scenario: Successful homepage login and validation
+Given User launches the browser
+When User loads the login html page in the broswer
+Then User validates the title of the home page
+When User clicks on the Login button without entering username
+Then User verifies username error message is thrown
+Then User enters the username
+And clicks on the Login button
+Then User verifies password error message is thrown
+Then User enter the password
+And clicks on the Login button
+Then the user is successfully logged into HotelBookingForm page
+
+#Scenario: Successful homepage login and booking validation
+Given User launches the browser
+When User loads the login html page in the broswer
+Then User enters the username
+Then User enter the password
+And clicks on the Login button
+Then User goes to the HotelBookingForm page
+When User validates the page throws error on clicking the ConfirmBooking button without entering firstName 
+Then User enters the firstName
+When User validates the page throws error on clicking the ConfirmBooking button without entering lastName
+Then User enters the lastName
+When User validates the page throws error on clicking the ConfirmBooking button without entering proper email
+Then User enter proper email
+When User validates the page throws error on clicking the ConfirmBooking button without entering mobile number
+When User validates the page throws error on clicking the ConfirmBooking button without entering proper mobile number  
+Then User enters the mobile number
+Then User enters address 
+When User clicks on ConfirmBooking button without entering city page throws error
+Then User enters city
+When User clicks on ConfirmBooking button without entering state page throws error
+Then User enters state
+Then User enters number of guests
+When User clicks on ConfirmBooking button without entering card holder name page throws error
+Then User enters card holder name
+When User clicks on ConfirmBooking button without entering debit card number page throws error
+Then User enters debit card number
+Then User enters CVV
+When User clicks on ConfirmBooking button without entering expiration month page throws error
+Then User enters expiration month
+When User clicks on ConfirmBooking button without entering expiration year page throws error
+When User clicks on ConfirmBooking button without entering expiration month page throws error
+Then User enters expiration year
+Then User clicks on ConfirmBooking button
+And the BookingComplete is verified	
+ 
+
+

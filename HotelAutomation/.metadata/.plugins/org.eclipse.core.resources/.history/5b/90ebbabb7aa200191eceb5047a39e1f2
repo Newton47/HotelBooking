@@ -1,0 +1,9 @@
+package com.automateAmazon;
+
+import org.testng.annotations.Test;
+
+public class getOTP {
+  @Test
+  public void f() {
+  }
+}

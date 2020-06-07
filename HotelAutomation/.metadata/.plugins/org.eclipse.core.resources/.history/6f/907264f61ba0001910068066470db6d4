@@ -1,0 +1,16 @@
+package SeleniumAutomation.Amazon;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+import pageObjects.ProductSelectorObjects;
+
+public class BuylamborghiniTest extends SearchitemTest {
+  @Test
+  public void buyLamboRC() 
+  {   driver.findElement(By.xpath("//span[@class=\"nav-sprite nav-logo-ext\"]")).click();
+	  ProductSelectorObjects obj1 = new ProductSelectorObjects(driver);
+	  obj1.searchbars().sendKeys("Lamborghini toy car");
+	  obj1.searchButton();
+  }
+}

@@ -1,0 +1,27 @@
+package learnSelenium;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class NumTable {
+
+	public static void main(String[] args) {
+		WebDriver wd;
+    	System.setProperty("webdriver.chrome.driver","C:\\Users\\Newton\\Desktop\\driver_chrome\\chromedriver.exe");
+    	wd = new ChromeDriver();
+    	wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+    	wd.get("http://demo.guru99.com/test/table.html");
+    	WebElement mytable = wd.findElement(By.xpath("/html/body/table/tbody"));
+    	
+    	List < WebElement > rows_table = mytable.findElements(By.tagName("tr"));
+    	
+    	
+
+	}
+
+}

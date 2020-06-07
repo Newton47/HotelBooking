@@ -1,0 +1,15 @@
+package SeleniumAutomation.Amazon;
+
+import org.testng.annotations.Test;
+
+import pageObjects.ProductSelectorObjects;
+
+public class PhilipsTrimmerRatingTest extends SearchitemTest{
+  
+  @Test
+  public void selectPhilipsTrimmer()
+  {
+	  ProductSelectorObjects obj1 = new ProductSelectorObjects(driver);
+	  
+  }
+}

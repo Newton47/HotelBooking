@@ -1,0 +1,21 @@
+package pageObjects;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+
+public class bookingPage {
+	
+	WebDriver driver;
+	
+	public String getError() {
+	String fnameAlert = driver.switchTo().alert().getText();
+	return fnameAlert;
+	}
+    
+	public void acceptError() {
+		driver.switchTo().alert().dismiss();
+	}
+	
+	
+
+}

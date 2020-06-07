@@ -1,0 +1,15 @@
+package pageObjects;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+
+public class bookingPage {
+	
+	WebDriver driver;
+	
+	String fnameAlert = driver.switchTo().alert().getText();
+	
+    
+	
+
+}

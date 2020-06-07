@@ -1,0 +1,15 @@
+package pageObjects;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+
+public class bookingPage {
+	
+	WebDriver driver;
+	
+	Alert alert = driver.switchTo().alert();
+    alert.accept();
+	
+
+}

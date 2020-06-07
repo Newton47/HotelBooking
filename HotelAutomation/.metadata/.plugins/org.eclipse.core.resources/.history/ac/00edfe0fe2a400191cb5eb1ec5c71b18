@@ -1,0 +1,10 @@
+package learnSelenium;
+
+public class NumTable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

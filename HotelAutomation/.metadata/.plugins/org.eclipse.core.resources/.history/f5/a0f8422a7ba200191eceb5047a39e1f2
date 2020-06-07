@@ -1,0 +1,13 @@
+package com.automateAmazon;
+
+import org.testng.annotations.Test;
+
+import resources.base;
+
+public class getOTP extends base{
+  @Test
+  public void getOTPfromGmail() 
+  {
+	  driver=initializeDriver();
+  }
+}

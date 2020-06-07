@@ -1,0 +1,16 @@
+package com.automateAmazon;
+
+import java.io.IOException;
+
+import org.testng.annotations.Test;
+
+import resources.base;
+
+public class getOTP extends base{
+  @Test
+  public void getOTPfromGmail() throws IOException 
+  {
+	  driver=initializeDriver();
+	  String baseUrl = props.getProperty("mailUrl");
+  }
+}

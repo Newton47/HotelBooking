@@ -1,0 +1,25 @@
+package CaseStudy.HotelBooking;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Base {
+	public static WebDriver driver;
+	public static Properties props;
+
+	public static WebDriver getDriver() throws IOException
+	{
+		props = new Properties();
+		FileInputStream fis = new FileInputStream("");
+		props.load(fis);
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Newton\\Desktop\\driver_chrome\\chromedriver.exe");
+		driver=new ChromeDriver();
+		
+		driver.get(props.getProperty("url"));	
+		return driver;
+	}
+}

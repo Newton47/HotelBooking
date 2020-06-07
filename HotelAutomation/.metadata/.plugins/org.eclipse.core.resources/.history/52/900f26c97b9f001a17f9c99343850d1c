@@ -1,0 +1,34 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class loginPage {
+	
+	WebDriver driver;
+	
+	@FindBy(name="userName")
+	WebElement username;
+	
+	@FindBy(name="userPwd")
+	WebElement password;
+	
+	@FindBy(className="btn")
+	WebElement LoginBtn;
+	
+	@FindBy(id="userErrMsg")
+	WebElement usrnmErr;
+	
+	@FindBy(id="pwdErrMsg")
+	WebElement pwdmsgErr;
+	
+	
+	public hotelLogin(WebDriver driver)
+	{
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+
+}

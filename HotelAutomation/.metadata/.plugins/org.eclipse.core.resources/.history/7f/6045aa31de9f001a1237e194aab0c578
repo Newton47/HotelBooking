@@ -1,0 +1,22 @@
+package pageObjects;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import CaseStudy.HotelBooking.Base;
+
+public class bookingPage extends Base {
+	
+	WebDriver driver;
+	@FindBy(xpath="//input[@id='btnPayment']")
+	WebElement bookBtn;
+	
+	
+	@FindBy(xpath="//input[@id='txtFirstName']")
+	WebElement fName;
+	
+	
+	
+
+}

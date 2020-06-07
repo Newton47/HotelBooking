@@ -1,0 +1,68 @@
+package pageObjects;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import CaseStudy.HotelBooking.Base;
+
+public class bookingPage extends Base {
+	
+	WebDriver driver;
+	@FindBy(xpath="//input[@id='btnPayment']")
+	WebElement bookBtn;
+	
+	
+	@FindBy(xpath="//input[@id='txtFirstName']")
+	WebElement fname;
+	
+	@FindBy(xpath="//input[@id='txtLastName']")
+	WebElement lname;
+	
+	@FindBy(xpath="//input[@id='txtEmail']")
+	WebElement email;
+	
+	@FindBy(xpath="//input[@id='txtPhone']")
+	WebElement mobile;
+	
+	@FindBy(xpath="//td/textarea")
+	WebElement address;
+	
+	@FindBy(xpath="//input[@id='txtCardholderName']")
+	WebElement cardholdername;
+	
+	@FindBy(xpath="//input[@id='txtDebit']")
+	WebElement debitcard;
+	
+	@FindBy(xpath="//input[@id='txtCvv']")
+	WebElement cvv;
+	
+	@FindBy(xpath="//input[@id='txtMonth']")
+	WebElement expmonth;
+	
+	@FindBy(xpath="//input[@id='txtYear']")
+	WebElement expyear;
+	
+	@FindBy(xpath="//h1[contains(text(),'Booking Completed!')]")
+	WebElement bookCfm;
+	
+	public bookingPage(WebDriver driver)
+	{
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void clickBook(){
+
+		bookBtn.click();
+    }  
+	
+	public void setfname(String fname)
+	{
+		fname.sendKeys(fname);
+	}
+	
+
+}

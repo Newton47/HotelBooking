@@ -1,0 +1,15 @@
+package learnSelenium;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class google {
+	WebDriver driver;
+  @Test
+  public void googleTest() 
+  {
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\Newton\\Desktop\\driver_chrome\\chromedriver.exe");
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
+  }
+}

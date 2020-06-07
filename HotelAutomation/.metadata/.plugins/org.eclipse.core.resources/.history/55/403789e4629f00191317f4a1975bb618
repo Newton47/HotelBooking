@@ -1,0 +1,9 @@
+package pageObjects;
+
+import org.testng.annotations.Test;
+
+public class SearchObjects {
+  @Test
+  public void f() {
+  }
+}

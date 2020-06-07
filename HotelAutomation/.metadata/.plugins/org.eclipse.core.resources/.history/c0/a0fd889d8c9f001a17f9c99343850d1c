@@ -1,0 +1,27 @@
+package pageObjects;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class bookingPage {
+	
+	WebDriver driver;
+	
+	public String getError() {
+	String fnameAlert = driver.switchTo().alert().getText();
+	return fnameAlert;
+	}
+    
+	public void acceptError() {
+		driver.switchTo().alert().dismiss();
+	}
+	
+	@FindBy(xpath="//input[@id='txtFirstName']")
+	WebElement fName;
+	
+	
+	
+
+}

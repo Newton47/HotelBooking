@@ -1,0 +1,35 @@
+package SeleniumAutomation.Amazon;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+import pageObjects.ProductSelectorObjects;
+import resources.base;
+
+
+public class PhilipsTrimmerRatingTest extends base{
+  
+  @Test
+  public void selectPhilipsTrimmer() throws InterruptedException
+  {
+	  ProductSelectorObjects obj1 = new ProductSelectorObjects(driver);
+	  obj1.searchbars().clear();
+	  obj1.searchbars().sendKeys("philips trimmer for mens");
+	  obj1.searchButton();
+	  driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+	  
+	  obj1.rating4Selectors().click();
+	  
+	  WebDriverWait wait =new WebDriverWait(driver,10);
+	  WebElement pageLoads;
+	  
+	  pageLoads = wait.until(ExpectedConditions.elementToBeClickable(obj1.productSelector()));
+	  pageLoads.click();
+	  
+	  
+	  
+  }
+}

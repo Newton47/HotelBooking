@@ -1,0 +1,12 @@
+package SeleniumAutomation.Amazon;
+
+import org.testng.annotations.Test;
+
+public class PhilipsTrimmerRatingTest {
+  
+  @Test
+  public void selectPhilipsTrimmer()
+  {
+	  
+  }
+}

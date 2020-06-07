@@ -1,0 +1,330 @@
+package stepDefinitions;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+import CaseStudy.HotelBooking.Base;
+import cucumber.api.java.en.Then;
+import pageObjects.bookingPage;
+
+public class bookingStepDef extends Base{
+
+	bookingPage book;
+	
+	public String getError() {
+		String errTxt = driver.switchTo().alert().getText();
+		return errTxt;
+	}
+    	
+	public void acceptError() {
+		driver.switchTo().alert().dismiss();
+	}
+	
+	
+	
+	@Then("^User validates error by clicking the ConfirmBooking button without entering firstName$")
+	public void user_validates_error_by_clicking_the_ConfirmBooking_button_without_entering_firstName() throws Throwable {
+
+		book = new bookingPage(driver);
+		book.clickBook();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please fill the First Name"));
+		System.out.println(getError());
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}	 
+		 
+	@Then("^User enters the firstName$")
+	public void user_enters_the_firstName() throws Throwable {
+	
+		book.setfname(Base.userdetail("firstname"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+
+	@Then("^User validates error on clicking the ConfirmBooking button without entering lastName$")
+	public void user_validates_error_on_clicking_the_ConfirmBooking_button_without_entering_lastName() throws Throwable {
+
+		book.clickBook();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please fill the Last Name"));
+		System.out.println(getError());
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+
+	@Then("^User enters the lastName$")
+	public void user_enters_the_lastName() throws Throwable {
+		
+		book.setlname(Base.userdetail("lastname"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	
+	}
+
+	@Then("^User validates error on clicking the ConfirmBooking button entering improper email$")
+	public void user_validates_error_on_clicking_the_ConfirmBooking_button_entering_improper_email() throws Throwable {
+		
+		book.setmail(Base.userdetail("impropermail"));
+		book.clickBook();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please enter valid Email Id."));
+		System.out.println(getError());
+		
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		WebElement mailBox = driver.findElement(By.xpath("//input[@id='txtEmail']"));
+		mailBox.clear();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+	}
+
+	@Then("^User enter proper email$")
+	public void user_enter_proper_email() throws Throwable {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		book.setmail(Base.userdetail("email"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+
+	@Then("^User validates error on clicking the ConfirmBooking button without entering mobile number$")
+	public void user_validates_error_on_clicking_the_ConfirmBooking_button_without_entering_mobile_number() throws Throwable {
+	
+		book.clickBook();
+		Thread.sleep(3000);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please fill the Mobile No."));
+		System.out.println(getError());
+		Thread.sleep(3000);
+		acceptError(); 
+		
+        Thread.sleep(10000);
+		
+	}
+
+	@Then("^User validates error on clicking the ConfirmBooking button entering improper mobile number$")
+	public void user_validates_error_on_clicking_the_ConfirmBooking_button_entering_improper_mobile_number() throws Throwable {
+	  
+		
+		String mob[] ={"improperlen","improperstartdigit"};
+		for(int i=0;i<mob.length;i++)
+		{	
+		//book.clickBook();	
+		book.mobile(Base.userdetail(mob[i]));
+		book.clickBook();		
+		
+		getError();
+		Thread.sleep(3000);
+		Assert.assertTrue(getError().contains("Please enter valid Contact no."));
+		System.out.println(getError());
+		
+		acceptError(); 
+		Thread.sleep(3000);
+		
+		WebElement numberBox = driver.findElement(By.xpath("//input[@id='txtPhone']"));
+		numberBox.clear();
+		Thread.sleep(3000);
+		}
+	}
+
+	@Then("^User enters the mobile number$")
+	public void user_enters_the_mobile_number() throws Throwable {
+		
+		book.mobile(Base.userdetail("mobilenum"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+	}
+
+	@Then("^User enters address$")
+	public void user_enters_address() throws Throwable {
+		
+		book.addresses(Base.userdetail("address"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+	}
+
+	@Then("^User clicks on ConfirmBooking button without entering city page throws error$")
+	public void user_clicks_on_ConfirmBooking_button_without_entering_city_page_throws_error() throws Throwable {
+		
+		book.clickBook();	
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		getError();
+		Assert.assertTrue(getError().contains("Please select city"));
+		System.out.println(getError());
+		
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+	
+	}
+
+	@Then("^User enters city$")
+	public void user_enters_city() throws Throwable {
+	 
+		Select citySelect = new Select(driver.findElement(By.name("city")));
+		citySelect.selectByValue("Bangalore");
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+	}
+
+	@Then("^User clicks on ConfirmBooking button without entering state page throws error$")
+	public void user_clicks_on_ConfirmBooking_button_without_entering_state_page_throws_error() throws Throwable {
+		
+		book.clickBook();	
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please select state"));
+		System.out.println(getError());
+		
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+	}
+
+	@Then("^User enters state$")
+	public void user_enters_state() throws Throwable {
+	
+		Select stateSelect = new Select(driver.findElement(By.name("state")));
+		stateSelect.selectByValue("Karnataka");
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+	}
+
+	@Then("^User enters number of guests$")
+	public void user_enters_number_of_guests() throws Throwable {
+
+		Select guestSelect = new Select(driver.findElement(By.name("persons")));
+		guestSelect.selectByValue("2");
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+
+	@Then("^User clicks on ConfirmBooking button without entering card holder name page throws error$")
+	public void user_clicks_on_ConfirmBooking_button_without_entering_card_holder_name_page_throws_error() throws Throwable {
+		
+		book.clickBook();	
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please fill the Card holder name"));
+		System.out.println(getError());
+	
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	
+	}
+
+	@Then("^User enters card holder name$")
+	public void user_enters_card_holder_name() throws Throwable {
+		
+		book.cardHolder(Base.userdetail("cardholdername"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+
+	}
+
+	@Then("^User clicks on ConfirmBooking button without entering debit card number page throws error$")
+	public void user_clicks_on_ConfirmBooking_button_without_entering_debit_card_number_page_throws_error() throws Throwable {
+		
+		book.clickBook();	
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please fill the Debit card Number"));
+		System.out.println(getError());
+		
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+	}
+
+	@Then("^User enters debit card number$")
+	public void user_enters_debit_card_number() throws Throwable {
+		
+		book.cardNum(Base.userdetail("cardnumber"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+	}
+
+	@Then("^User enters CVV$")
+	public void user_enters_CVV() throws Throwable {
+		
+		book.cardCvv(Base.userdetail("cvvnumber"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+	}
+
+	@Then("^User clicks on ConfirmBooking button without entering expiration month page throws error$")
+	public void user_clicks_on_ConfirmBooking_button_without_entering_expiration_month_page_throws_error() throws Throwable {
+		
+		book.clickBook();	
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please fill expiration month"));
+		System.out.println(getError());
+		
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	    
+	}
+
+	@Then("^User enters expiration month$")
+	public void user_enters_expiration_month() throws Throwable {
+	    
+		book.expirymonth(Base.userdetail("expmon"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+
+	@Then("^User clicks on ConfirmBooking button without entering expiration year page throws error$")
+	public void user_clicks_on_ConfirmBooking_button_without_entering_expiration_year_page_throws_error() throws Throwable {
+		
+		book.clickBook();	
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		getError();
+		Assert.assertTrue(getError().contains("Please fill the expiration year"));
+		System.out.println(getError());
+	
+		acceptError(); 
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	
+	}
+
+	@Then("^User enters expiration year$")
+	public void user_enters_expiration_year() throws Throwable {
+	    
+		book.expiryear(Base.userdetail("expyears"));
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	    
+	}
+	
+	@Then("^User clicks on ConfirmBooking button$")
+	public void user_clicks_on_ConfirmBooking_button() throws Throwable {
+		
+		book.clickBook();	
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+	
+	@Then("^the BookingComplete is verified$")
+	public void the_BookingComplete_is_verified() throws Throwable {
+		
+		  String completeTitle = book.getConfirmTitle();
+		    Assert.assertTrue(completeTitle.contains("Hotel Booking Form"));
+		    System.out.println("Booking is completed");
+	
+	}
+
+
+}

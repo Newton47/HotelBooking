@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+ <listeners>
+ <listener name="SeleniumAutomation.Amazon.Listeners"/>
+ </listeners>
+  <test thread-count="5" name="FirstTest">
+    <classes>
+      <class name="SeleniumAutomation.Amazon.HomepageTest"/>
+     
+    </classes>
+  </test>  
+  <test name="SecondTest">  
+    <classes>
+       <class name="SeleniumAutomation.Amazon.SearchitemTest"/>
+    </classes> 
+  </test>  
+  <test name="ThirdTest">  
+    <classes> 
+      <class name="SeleniumAutomation.Amazon.buyFerrariTest"/>
+    </classes>  
+  </test>  
+ 
+      
+    
+  <!-- Test -->
+</suite> <!-- Suite -->
